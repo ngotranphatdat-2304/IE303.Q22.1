@@ -70,18 +70,16 @@ public class bai3 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Nhap so luong diem: ");
         int n = sc.nextInt();
         
         Point[] points = new Point[n];
-        System.out.println("Nhap toa do x y cho tung diem:");
         for (int i = 0; i < n; i++) {
             points[i] = new Point(sc.nextLong(), sc.nextLong());
         }
 
         List<Point> hull = getConvexHull(points);
 
-        System.out.println("--- CAC DIEM THUOC BAO LOI ---");
+        System.out.println("Cac diem thuoc bao loi:");
         for (Point p : hull) {
             System.out.println(p);
         }
