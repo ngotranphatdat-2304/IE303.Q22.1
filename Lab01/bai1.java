@@ -6,7 +6,7 @@ class bai1 {
         Scanner sc = new Scanner(System.in);
         double banKinh = sc.nextDouble();
         double dienTichPI = Math.PI * banKinh * banKinh;
-        int n = 1000000;
+        int n = 10000000;
         int count = 0;
         Random rd = new Random();
         for (int i = 0; i < n; i++) {
