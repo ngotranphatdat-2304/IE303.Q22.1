@@ -172,7 +172,7 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
             // Xoa ong khi no di qua man hinh
             if (pipe.x + pipe.width < 0) {
                 pipes.remove(i);
-                i--; // De tranh loi khi xoa phan tu trong danh sach
+                i--;
             }
         }
     }
@@ -224,7 +224,6 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
         JFrame frame = new JFrame("Flappy Bird");
         
         // Thiet lap cac thuoc tinh cua so
-        //frame.setSize(360, 640);
         frame.setLocationRelativeTo(null); // Canh giua man hinh
         frame.setResizable(false);        // Khong cho phep thay doi kich thuoc cua so
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
