@@ -18,7 +18,7 @@ public class ShopInterface extends JFrame {
     private JLabel featuredPriceLabel;
     private JLabel featuredBrandLabel;
     private JTextArea featuredDescriptionArea;
-    private float alpha = 1f; // Độ trong suốt (từ 0.0 đến 1.0)
+    private float alpha = 1f;
     private Timer timer;
 
     private static class Shoe {
