@@ -272,10 +272,7 @@ public class ShopInterface extends JFrame {
     private List<Shoe> loadShoesFromDatabase() {
         List<Shoe> list = new ArrayList<>();
     
-        // 1. Lấy chuỗi Connection String từ tài khoản MongoDB Atlas của bạn
-        // Thay <username>, <password>, và <cluster-url> bằng thông tin thật của bạn
-        String connectionString = "mongodb+srv://ngotranphatdat_db_user:Etdf3IOHSGxBmMc5@cluster0.vmnnrmp.mongodb.net/ShoesMarket?retryWrites=true&w=majority";
-        // 2. Kết nối và truy vấn bằng cơ chế try-with-resources để tự động đóng kết nối khi xong
+        String connectionString = "mongodb+srv://<user>:<password>@cluster0.vmnnrmp.mongodb.net/ShoesMarket?retryWrites=true&w=majority";
         try (MongoClient mongoClient = MongoClients.create(connectionString)) {
             // Kết nối vào Database
             MongoDatabase database = mongoClient.getDatabase("ShoesMarket");
@@ -283,7 +280,7 @@ public class ShopInterface extends JFrame {
             // Kết nối vào Collection
             MongoCollection<Document> collection = database.getCollection("shoes");
 
-            // Duyệt qua từng Document thu được từ Cloud
+            // Duyệt qua từng Document
             for (Document doc : collection.find()) {
                 String path = doc.getString("imagePath");
                 String title = doc.getString("title");
@@ -291,16 +288,14 @@ public class ShopInterface extends JFrame {
                 String brand = doc.getString("brand");
                 String desc = doc.getString("description");
 
-                // Khởi tạo Object Shoe từ dữ liệu MongoDB và thêm vào List công cụ hiển thị
                 list.add(new Shoe(path, title, price, brand, desc));
             }
         } catch (Exception e) {
             e.printStackTrace();
-            // Hiển thị thông báo lỗi trực quan nếu mất mạng hoặc sai tài khoản
             JOptionPane.showMessageDialog(this, "Lỗi kết nối MongoDB Atlas: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     
-        // Phương án dự phòng để giao diện Swing không bị trống trơn nếu db lỗi
+        // Phương án dự phòng để giao diện Swing không bị trống nếu db lỗi
         if (list.isEmpty()) {
             list.add(new Shoe("images/img1.png", "Mẫu giày dự phòng", "$0.00", "Không có", "Chưa tải được dữ liệu."));
         }
